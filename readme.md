@@ -1,6 +1,6 @@
-# 📃 weather-app-js-webpack
+# 📃 platform-game-js-webpack-phaser
 
-weather-app-js-webpack
+platform-game-js-webpack-phaser
 
 
 
@@ -22,7 +22,7 @@ this project can be found in https://github.com/firmoholanda/weather-app-js-webp
 ### ✨ [live version](https://raw.githack.com/firmoholanda/weather-app-js-webpack/release/dist/index.html)
 
 <a href="https://raw.githack.com/firmoholanda/weather-app-js-webpack/release/dist/index.html" target="_blank">
-    <img alt="app image" src="https://github.com/firmoholanda/weather-app-js-webpack/blob/feature02-api/src/view/public/appScreenshot.png"/>
+    <img alt="app image" src=""/>
 </a>
 
 
