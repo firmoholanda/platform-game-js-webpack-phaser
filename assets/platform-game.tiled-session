@@ -1,5 +1,5 @@
 {
-    "activeFile": "",
+    "activeFile": "tilemaps/level1.tmx",
     "expandedProjectPaths": [
     ],
     "file.lastUsedOpenFilter": "All Files (*)",
@@ -42,6 +42,17 @@
             "scaleInDock": 1,
             "scaleInEditor": 1
         },
+        "tilemaps/level1.tmx": {
+            "scale": 1.0867745535714284,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 443.0541720154044,
+                "y": 224.05750962772782
+            }
+        },
+        "tilemaps/level1.tmx#kenney_simple_platformer": {
+            "scaleInDock": 1
+        },
         "tilemaps/tileSet.tsx": {
             "scaleInDock": 1,
             "scaleInEditor": 1
@@ -49,9 +60,11 @@
     },
     "map.lastUsedExportFilter": "JSON map files (*.json)",
     "openFiles": [
+        "tilemaps/level1.tmx"
     ],
     "project": "platform-game.tiled-session",
     "recentFiles": [
+        "tilemaps/level1.tmx",
         "tilemaps/tileSet.tsx",
         "tilemaps/level01.tmx"
     ]
