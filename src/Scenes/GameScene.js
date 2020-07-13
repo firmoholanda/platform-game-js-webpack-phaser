@@ -123,7 +123,8 @@ export default class GameScene extends Phaser.Scene {
 
     function collectDiamond(diamond) {
       //alert("collectDiamond")
-      diamond.setActive(false).setVisible(false);
+      //diamond.setActive(false).setVisible(false);
+      this.scene.start('TitleScene')
     }
   }
 
