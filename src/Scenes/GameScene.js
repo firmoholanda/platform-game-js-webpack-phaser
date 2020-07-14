@@ -1,6 +1,5 @@
 import 'phaser';
 
-
 let livesText;
 let lives = 3;
 
