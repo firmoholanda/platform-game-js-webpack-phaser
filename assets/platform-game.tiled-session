@@ -1,5 +1,5 @@
 {
-    "activeFile": "tilemaps/level1.tmx",
+    "activeFile": "tilemaps/level02.tmx",
     "expandedProjectPaths": [
     ],
     "file.lastUsedOpenFilter": "All Files (*)",
@@ -32,15 +32,29 @@
         },
         "tilemaps/level01.tmx": {
             "scale": 1.0867745535714284,
-            "selectedLayer": 0,
+            "selectedLayer": 1,
             "viewCenter": {
                 "x": 445.3545571245187,
-                "y": 179.89011553273434
+                "y": 180.35019255455717
             }
+        },
+        "tilemaps/level01.tmx#kenney_simple_platformer": {
+            "scaleInDock": 1
         },
         "tilemaps/level01.tmx#platformPack_tilesheet": {
             "scaleInDock": 1,
             "scaleInEditor": 1
+        },
+        "tilemaps/level02.tmx": {
+            "scale": 1.0867745535714284,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 445.3545571245187,
+                "y": 180.35019255455717
+            }
+        },
+        "tilemaps/level02.tmx#kenney_simple_platformer": {
+            "scaleInDock": 1
         },
         "tilemaps/level1.tmx": {
             "scale": 1.0867745535714284,
@@ -53,19 +67,33 @@
         "tilemaps/level1.tmx#kenney_simple_platformer": {
             "scaleInDock": 1
         },
+        "tilemaps/level3.tmx": {
+            "scale": 1.0867745535714284,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 449.0351732991015,
+                "y": 223.59743260590506
+            }
+        },
+        "tilemaps/level3.tmx#kenney_simple_platformer": {
+            "scaleInDock": 1
+        },
         "tilemaps/tileSet.tsx": {
             "scaleInDock": 1,
             "scaleInEditor": 1
         }
     },
     "map.lastUsedExportFilter": "JSON map files (*.json)",
+    "map.lastUsedFormat": "tmx",
     "openFiles": [
-        "tilemaps/level1.tmx"
+        "tilemaps/level02.tmx"
     ],
     "project": "platform-game.tiled-session",
     "recentFiles": [
+        "tilemaps/level02.tmx",
+        "tilemaps/level01.tmx",
+        "tilemaps/level3.tmx",
         "tilemaps/level1.tmx",
-        "tilemaps/tileSet.tsx",
-        "tilemaps/level01.tmx"
+        "tilemaps/tileSet.tsx"
     ]
 }

@@ -7,6 +7,8 @@ let lives = 3;
 let scoreText;
 let score = 0;
 
+let currentMap = 1;
+
 export default class GameScene extends Phaser.Scene {
   constructor() {
     super('Game');
@@ -15,7 +17,9 @@ export default class GameScene extends Phaser.Scene {
   preload() {
 
     // preload map
-    this.load.tilemapTiledJSON('map', 'assets/tilemaps/level1.json');
+    this.load.tilemapTiledJSON('map01', 'assets/tilemaps/level01.json');
+    this.load.tilemapTiledJSON('map02', 'assets/tilemaps/level02.json');
+    this.load.tilemapTiledJSON('map03', 'assets/tilemaps/level03.json');
     
     // preload images
     this.load.image('background', 'assets/images/background.png');
@@ -31,7 +35,7 @@ export default class GameScene extends Phaser.Scene {
   create() {
     
     // create map
-    const map = this.make.tilemap({ key: 'map' });
+    const map = this.make.tilemap({ key: 'map0' + currentMap });
 
     // create tileset
     const tileset = map.addTilesetImage('kenney_simple_platformer', 'tiles');
@@ -99,8 +103,8 @@ export default class GameScene extends Phaser.Scene {
     });
 
     // display total lives and score
-    livesText = this.add.text(20, 570, "lives: "+ lives, { fontSize: '20px', fill: '#ffffff', });
-    scoreText = this.add.text(20, 600, "score: " + score, { fontSize: '20px', fill: '#ffffff', });
+    livesText = this.add.text(20, 525, "lives: " + lives, { fontSize: '20px', fill: '#ffffff', });
+    scoreText = this.add.text(20, 550, "score: " + score, { fontSize: '20px', fill: '#ffffff', });
 
     // add collision between the player and the spikes and the diamond
     this.physics.add.collider(this.player, this.spikes, hitSpikes, null, this);
@@ -124,7 +128,10 @@ export default class GameScene extends Phaser.Scene {
     function collectDiamond(diamond) {
       //alert("collectDiamond")
       //diamond.setActive(false).setVisible(false);
-      this.scene.start('TitleScene')
+      //this.scene.start('TitleScene')
+
+      currentMap +=1;
+      this.scene.restart();
     }
   }
 
