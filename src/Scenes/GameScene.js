@@ -126,9 +126,8 @@ export default class GameScene extends Phaser.Scene {
     }
 
     function collectDiamond(diamond) {
-      //alert("collectDiamond")
-      //diamond.setActive(false).setVisible(false);
-      //this.scene.start('TitleScene')
+      score += 3;
+      scoreText.setText("score: " + score);
 
       currentMap +=1;
       this.scene.restart();

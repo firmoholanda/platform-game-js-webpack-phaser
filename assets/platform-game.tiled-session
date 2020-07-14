@@ -47,7 +47,7 @@
         },
         "tilemaps/level02.tmx": {
             "scale": 1.0867745535714284,
-            "selectedLayer": 0,
+            "selectedLayer": 2,
             "viewCenter": {
                 "x": 445.3545571245187,
                 "y": 180.35019255455717
