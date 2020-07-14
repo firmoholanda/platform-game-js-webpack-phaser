@@ -22,5 +22,9 @@
     "webpack": "^3.4.1",
     "raw-loader": "^0.5.1",
     "phaser": "^3.3.0"
+  },
+  "dependencies": {
+    "node-fetch": "^2.6.0",
+    "regenerator-runtime": "^0.13.5"
   }
 }
