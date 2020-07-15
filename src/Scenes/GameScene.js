@@ -1,5 +1,6 @@
 import 'phaser';
 import Button from '../Objects/Button';
+import { saveLocalScore } from '../Helpers/saveLocal';
 
 let livesText;
 let lives = 3;
@@ -126,14 +127,26 @@ export default class GameScene extends Phaser.Scene {
       // update total player lives
       lives -= 1;
       livesText.setText("lives: " + lives);
+
+      // game over if no life
+      if (lives == 0) {
+        this.scene.start('GameOver');
+      }
+      
     }
 
     function collectDiamond(diamond) {
       score += 3;
       scoreText.setText("score: " + score);
 
+      saveLocalScore(score)
       currentMap +=1;
-      this.scene.restart();
+
+      if (score == 9) {
+        this.scene.start('GameOver');
+      } else {
+        this.scene.restart();
+      }
     }
 
   }

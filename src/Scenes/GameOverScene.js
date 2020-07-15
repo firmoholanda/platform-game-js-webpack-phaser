@@ -1,34 +1,25 @@
 import 'phaser';
 import config from '../Config/config';
 import Button from '../Objects/Button';
-import { getScore, resetScore } from '../score';
-import { getUser } from '../Helpers/user';
-import { postScore } from '../scoreAPI';
+import { getLocalScore, saveLocalScore } from '../Helpers/saveLocal';
 
 export default class GameOverScene extends Phaser.Scene {
   constructor() {
     super('GameOver');
   }
 
-  create() {
-    this.add.image(400, 300, 'forest-bg');
-    this.add.image(400, 150, 'rpg-logo');
-    // this.scene.start('WorldScene');
 
-    this.title = this.add.text(0, 0, 'Victory', { fontSize: '40px', fontStyle: 'bold', fill: '#fff' });
-    this.messageText = this.add.text(
-      0,
-      0,
-      'You have managed to safely guide the warriors through the forest!',
-      {
-        fontSize: '25px',
-        fill: '#fff',
-        align: 'center',
-        wordWrap: { width: 550, useAdvancedWrap: true },
-      },
-    );
-    this.score = this.add.text(0, 0, `Score: ${getScore()}`, { fontSize: '30px', fill: '#fff' });
+  create() {
+
+    this.add.image(400, 100, 'diamond').setAlpha(0.7);
+
+    this.title = this.add.text(0, 0, 'game over', { fontSize: '32px', fontStyle: 'bold', fill: '#fff' });
+    this.messageText = this.add.text(0, 0, 'thanks for playing');
+    this.score = this.add.text(0, 0, "score: " + getLocalScore(), { fontSize: '30px', fill: '#fff' });
     this.zone = this.add.zone(config.width / 2, config.height / 2, config.width, config.height);
+
+    // reset local score
+    saveLocalScore(0);
 
     Phaser.Display.Align.In.Center(
       this.title,
@@ -49,12 +40,8 @@ export default class GameOverScene extends Phaser.Scene {
     this.messageText.displayOriginY = -15;
     this.score.displayOriginY = -80;
 
-    const user = getUser();
-    const finalScore = getScore();
+    this.menuButton = new Button(this, 400, 530, 'blueButton1', 'blueButton2', 'menu', 'Title');
 
-    postScore(user, finalScore);
-
-    this.menuButton = new Button(this, 400, 530, 'button1', 'button2', 'Menu', 'Title');
-    resetScore();
   }
+
 }
