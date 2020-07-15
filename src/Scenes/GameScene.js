@@ -1,4 +1,6 @@
 import 'phaser';
+import Button from '../Objects/Button';
+import { saveLocalScore } from '../Helpers/saveLocal';
 
 let livesText;
 let lives = 3;
@@ -52,6 +54,9 @@ export default class GameScene extends Phaser.Scene {
     this.player.setBounce(0.3); 
     this.player.setCollideWorldBounds(true);
     this.physics.add.collider(this.player, platforms);
+
+    // add menu button
+    this.menuButton = new Button(this, 680, 550, 'blueButton1', 'blueButton2', 'menu', 'Title');
 
     // walking animation
     this.anims.create({
@@ -122,15 +127,28 @@ export default class GameScene extends Phaser.Scene {
       // update total player lives
       lives -= 1;
       livesText.setText("lives: " + lives);
+
+      // game over if no life
+      if (lives == 0) {
+        this.scene.start('GameOver');
+      }
+      
     }
 
     function collectDiamond(diamond) {
       score += 3;
       scoreText.setText("score: " + score);
 
+      saveLocalScore(score)
       currentMap +=1;
-      this.scene.restart();
+
+      if (score == 9) {
+        this.scene.start('GameOver');
+      } else {
+        this.scene.restart();
+      }
     }
+
   }
 
   update() {
