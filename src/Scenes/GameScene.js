@@ -1,12 +1,12 @@
 import 'phaser';
 import Button from '../Objects/Button';
-import { saveLocal } from '../Helpers/saveLocal';
+import { getLocalScore, saveLocalScore } from '../Helpers/localStorage';
 
 let livesText;
 let lives = 3;
 
 let scoreText;
-let score = 0;
+let score = getLocalScore();
 
 let currentMap = 1;
 
@@ -114,6 +114,13 @@ export default class GameScene extends Phaser.Scene {
     this.physics.add.collider(this.player, this.spikes, hitSpikes, null, this);
     this.physics.add.collider(this.diamonds, this.player, collectDiamond, null, this);
 
+    // reset variables and end game
+    const gameOver = () => {
+      lives = 3;
+      score = 0;
+      currentMap = 1;
+      this.scene.start('GameOver');
+    }
     
     function hitSpikes(player) {
       // set player to the beginning of the map
@@ -130,7 +137,7 @@ export default class GameScene extends Phaser.Scene {
 
       // game over if no life
       if (lives == 0) {
-        this.scene.start('GameOver');
+        gameOver();
       }
       
     }
@@ -139,11 +146,11 @@ export default class GameScene extends Phaser.Scene {
       score += 3;
       scoreText.setText("score: " + score);
 
-      saveLocal(name, score)
+      saveLocalScore(score)
       currentMap +=1;
 
       if (score == 9) {
-        this.scene.start('GameOver');
+        gameOver();
       } else {
         this.scene.restart();
       }

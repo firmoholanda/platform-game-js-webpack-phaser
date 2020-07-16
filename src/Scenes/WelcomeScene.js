@@ -1,7 +1,7 @@
 import 'phaser';
 import config from '../Config/config';
 import Button from '../Objects/Button';
-import { saveLocal } from '../Helpers/saveLocal';
+import { initSaveLocal, saveLocalName } from '../Helpers/localStorage';
 
 export default class WelcomeScene extends Phaser.Scene {
   constructor() {
@@ -76,14 +76,13 @@ export default class WelcomeScene extends Phaser.Scene {
     this.messageText05.displayOriginY = 10;
     this.messageText06.displayOriginY = -10;
     this.messageText07.displayOriginY = -100;
-
   
-
+    initSaveLocal();
     this.add.dom(400, 450).createFromCache('nameForm');
 
     var imputTextElement = document.getElementById('nameField')
     imputTextElement.addEventListener('focusout', () => {
-      saveLocal(imputTextElement.value, 0);
+      saveLocalName(imputTextElement.value);
     });
 
     this.menuButton = new Button(this, 400, 530, 'blueButton1', 'blueButton2', 'play', 'Game');

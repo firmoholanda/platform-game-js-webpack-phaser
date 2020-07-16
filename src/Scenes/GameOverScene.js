@@ -2,7 +2,7 @@ import 'phaser';
 import config from '../Config/config';
 import Button from '../Objects/Button';
 import { postScore } from '../Helpers/leaderboardAPI';
-import { getLocal } from '../Helpers/saveLocal';
+import { getLocalName, getLocalScore } from '../Helpers/localStorage';
 
 export default class GameOverScene extends Phaser.Scene {
   constructor() {
@@ -12,7 +12,8 @@ export default class GameOverScene extends Phaser.Scene {
 
   create() {
 
-    const [localName, localScore] = getLocal();
+    const localName = getLocalName();
+    const localScore = getLocalScore();
 
     this.add.image(400, 100, 'diamond').setAlpha(0.7);
 
