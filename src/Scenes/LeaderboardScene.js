@@ -9,7 +9,6 @@ export default class LeaderboardScene extends Phaser.Scene {
   }
 
   create() {
-    //this.add.image(400, 300, 'diamond');
 
     this.title = this.add.text(0, 0, 'leaderboard', { fontSize: '32px', fontStyle: 'bold', fill: '#fff' });
     this.zone = this.add.zone(config.width / 2, config.height / 2, config.width, config.height);
@@ -26,7 +25,7 @@ export default class LeaderboardScene extends Phaser.Scene {
         const arr = [];
         scores.map((user, i) => {
           arr.push(
-            `${(i + 1).toString()}. ${user[0]}                      ${user[1].toString()}`,
+            `${(i + 1).toString()}. ${user[1]}                      ${user[0].toString()}`,
           );
           return true;
         });

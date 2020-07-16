@@ -66,5 +66,5 @@ const getScores = async () => {
 
 
 export {
-  createGame, postScore, getScores 
+  createGame, postScore, getScores
 };
