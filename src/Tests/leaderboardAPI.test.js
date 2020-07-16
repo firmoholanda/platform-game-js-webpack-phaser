@@ -1,7 +1,6 @@
 
 import { createGame, postScore, getScores } from '../Helpers/leaderboardAPI';
 
-
 describe('create new game', () => {
   test('should return string id of game', () => createGame().then((data) => {
     expect(data).toBeTruthy();
