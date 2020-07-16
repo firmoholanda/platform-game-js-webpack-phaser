@@ -1,22 +1,18 @@
-const saveLocal = (score) => {
-  const answer = JSON.stringify(score);
-  localStorage.setItem('score', answer);
+const saveLocal = (name, score) => {
+  localStorage.setItem('name', name);
+  localStorage.setItem('score', score);
 };
 
-const getLocalScore = () => {
-  const answer = localStorage.getItem('score');
-  let result = JSON.parse(answer);
-  if (result === null) {
-    result = 0;
-    saveLocal(result);
-  }
-  return result;
-};
+const getLocal = () => {
+  const name = localStorage.getItem('name');
+  const score = localStorage.getItem('score');
+  
+  if (name === null) { localStorage.setItem("name", "anonymous"); }
+  if (score === null) { localStorage.setItem("score", 0); }
 
-const saveLocalScore = (score) => {
-  saveLocal(score);
+  return name, score;
 };
 
 export {
-  saveLocal, saveLocalScore, getLocalScore,
+  saveLocal, getLocal
 };

@@ -25,6 +25,7 @@
   },
   "dependencies": {
     "node-fetch": "^2.6.0",
+    "phaser3-rex-plugins": "^1.1.19",
     "regenerator-runtime": "^0.13.5"
   }
 }

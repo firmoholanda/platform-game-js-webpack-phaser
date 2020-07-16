@@ -1,6 +1,6 @@
 import 'phaser';
 import Button from '../Objects/Button';
-import { saveLocalScore } from '../Helpers/saveLocal';
+import { saveLocal } from '../Helpers/saveLocal';
 
 let livesText;
 let lives = 3;
@@ -139,7 +139,7 @@ export default class GameScene extends Phaser.Scene {
       score += 3;
       scoreText.setText("score: " + score);
 
-      saveLocalScore(score)
+      saveLocal(name, score)
       currentMap +=1;
 
       if (score == 9) {

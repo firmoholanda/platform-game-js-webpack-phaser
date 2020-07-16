@@ -11,7 +11,7 @@ export default class TitleScene extends Phaser.Scene {
     this.add.image(400, 100, 'diamond').setAlpha(0.7);
 
     // Game
-    this.gameButton = new Button(this, config.width/2, config.height/2 - 100, 'blueButton1', 'blueButton2', 'play', 'Game');
+    this.gameButton = new Button(this, config.width / 2, config.height / 2 - 100, 'blueButton1', 'blueButton2', 'play', 'Welcome');
 
     // Options
     this.optionsButton = new Button(this, config.width/2, config.height/2, 'blueButton1', 'blueButton2', 'options', 'Options');
@@ -23,7 +23,10 @@ export default class TitleScene extends Phaser.Scene {
     this.boardButton = new Button(this, config.width / 2, config.height / 2 + 200, 'blueButton1', 'blueButton2', 'board', 'Leaderboard');
 
     // game over
-    this.goButton = new Button(this, config.width / 2, config.height / 2 + 250, 'blueButton1', 'blueButton2', 'game over', 'GameOver');
+    //this.goButton = new Button(this, config.width / 2, config.height / 2 + 250, 'blueButton1', 'blueButton2', 'game over', 'GameOver');
+
+    // welcome
+    //this.welcomeButton = new Button(this, config.width / 2, config.height / 2 + 250, 'blueButton1', 'blueButton2', 'welcome', 'Welcome');
 
 
     this.model = this.sys.game.globals.model;

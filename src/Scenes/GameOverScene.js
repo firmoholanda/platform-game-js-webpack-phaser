@@ -2,7 +2,7 @@ import 'phaser';
 import config from '../Config/config';
 import Button from '../Objects/Button';
 import { postScore } from '../Helpers/leaderboardAPI';
-import { getLocalScore, saveLocalScore } from '../Helpers/saveLocal';
+import { getLocal } from '../Helpers/saveLocal';
 
 export default class GameOverScene extends Phaser.Scene {
   constructor() {
@@ -12,20 +12,19 @@ export default class GameOverScene extends Phaser.Scene {
 
   create() {
 
-    const score = getLocalScore();
+    const [localName, localScore] = getLocal();
 
     this.add.image(400, 100, 'diamond').setAlpha(0.7);
 
     this.title = this.add.text(0, 0, 'game over', { fontSize: '32px', fontStyle: 'bold', fill: '#fff' });
     this.messageText = this.add.text(0, 0, 'thanks for playing');
-    this.score = this.add.text(0, 0, "score: " + score, { fontSize: '30px', fill: '#fff' });
+    this.score = this.add.text(0, 0, "score: " + localScore, { fontSize: '30px', fill: '#fff' });
     this.zone = this.add.zone(config.width / 2, config.height / 2, config.width, config.height);
 
     // post score to api
-    postScore("anonymous", score+1);
-
-    // reset local score
-    saveLocalScore(0);
+    if (localScore > 0) {
+      postScore(localName, localScore);
+    }
 
     Phaser.Display.Align.In.Center(
       this.title,
