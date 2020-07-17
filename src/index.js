@@ -1,3 +1,6 @@
+/* eslint-disable no-undef */
+/* eslint-disable import/no-extraneous-dependencies */
+
 import 'phaser';
 import config from './Config/config';
 import GameScene from './Scenes/GameScene';

@@ -19,7 +19,7 @@ const getLocalName = () => {
 
 const getLocalScore = () => {
   const score = parseInt(localStorage.getItem('score'), 10);
-  if (score == 0) { localStorage.setItem('score', 0); }
+  if (score === 0) { localStorage.setItem('score', 0); }
   return score;
 };
 

@@ -1,3 +1,6 @@
+/* eslint-disable no-undef */
+/* eslint-disable import/no-extraneous-dependencies */
+
 import 'phaser';
 import Button from '../Objects/Button';
 import { getLocalScore, saveLocalScore } from '../Helpers/localStorage';
@@ -107,10 +110,6 @@ export default class GameScene extends Phaser.Scene {
     livesText = this.add.text(20, 525, `lives: ${lives}`, { fontSize: '20px', fill: '#ffffff' });
     scoreText = this.add.text(20, 550, `score: ${score}`, { fontSize: '20px', fill: '#ffffff' });
 
-    // add collision between the player and the spikes and the diamond
-    this.physics.add.collider(this.player, this.spikes, hitSpikes, null, this);
-    this.physics.add.collider(this.diamonds, this.player, collectDiamond, null, this);
-
     // reset variables and end game
     const gameOver = () => {
       lives = 3;
@@ -126,7 +125,7 @@ export default class GameScene extends Phaser.Scene {
       player.setY(300);
       player.play('idle', true);
       player.setAlpha(0);
-      const tw = this.tweens.add({
+      this.tweens.add({
         targets: player, alpha: 1, duration: 100, ease: 'Linear', repeat: 5,
       });
 
@@ -135,24 +134,28 @@ export default class GameScene extends Phaser.Scene {
       livesText.setText(`lives: ${lives}`);
 
       // game over if no life
-      if (lives == 0) {
+      if (lives === 0) {
         gameOver();
       }
     }
 
-    function collectDiamond(diamond) {
+    function collectDiamond() {
       score += 3;
       scoreText.setText(`score: ${score}`);
 
       saveLocalScore(score);
       currentMap += 1;
 
-      if (score == 9) {
+      if (score === 9) {
         gameOver();
       } else {
         this.scene.restart();
       }
     }
+
+    // add collision between the player and the spikes and the diamond
+    this.physics.add.collider(this.player, this.spikes, hitSpikes, null, this);
+    this.physics.add.collider(this.diamonds, this.player, collectDiamond, null, this);
   }
 
   update() {

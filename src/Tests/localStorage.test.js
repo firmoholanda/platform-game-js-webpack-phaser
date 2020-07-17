@@ -1,26 +1,21 @@
-import { initSaveLocal, getLocalName, getLocalScore } from '../Helpers/localStorage';
+// import { initSaveLocal, getLocalName, getLocalScore } from '../Helpers/localStorage';
 
-const localStorageMock = {
-  getItem: jest.fn(),
-  setItem: jest.fn(),
-  clear: jest.fn(),
-};
-global.localStorage = localStorageMock;
+const localStorageTest = require('../Helpers/localStorage');
 
-initSaveLocal();
+localStorageTest.initSaveLocal();
 
 describe('test getLocalName', () => {
-  const name = getLocalName();
+  const name = localStorageTest.getLocalName();
 
-  test('should return name', () => {
-    expect(localStorage.getItem).toBeCalledWith('name');
+  test('should return name anonymous', () => {
+    expect(name).toBe('anonymous');
   });
 });
 
 describe('test getLocalScore', () => {
-  const score = getLocalScore();
+  const score = localStorageTest.getLocalScore();
 
-  test('should return score', () => {
-    expect(localStorage.getItem).toBeCalledWith('score');
+  test('should return score 0', () => {
+    expect(score).toBe(0);
   });
 });
