@@ -1,3 +1,6 @@
+/* eslint-disable no-undef */
+/* eslint-disable import/no-extraneous-dependencies */
+
 import 'phaser';
 
 export default {
@@ -11,5 +14,12 @@ export default {
       gravity: { y: 500 },
       debug: false,
     },
+  },
+  scale: {
+    mode: Phaser.Scale.FIT,
+    autoCenter: Phaser.Scale.CENTER_BOTH,
+  },
+  dom: {
+    createContainer: true,
   },
 };

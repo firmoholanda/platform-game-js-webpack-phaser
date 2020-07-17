@@ -64,7 +64,6 @@ const getScores = async () => {
   return sorting(answer.result);
 };
 
-
 export {
-  createGame, postScore, getScores 
+  createGame, postScore, getScores,
 };

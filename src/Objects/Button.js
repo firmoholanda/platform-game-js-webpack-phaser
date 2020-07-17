@@ -1,3 +1,6 @@
+/* eslint-disable no-undef */
+/* eslint-disable import/no-extraneous-dependencies */
+
 import 'phaser';
 
 export default class Button extends Phaser.GameObjects.Container {

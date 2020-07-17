@@ -1,10 +1,12 @@
+/* eslint-disable no-undef */
+/* eslint-disable import/no-extraneous-dependencies */
+
 import 'phaser';
 
 export default class PreloaderScene extends Phaser.Scene {
   constructor() {
     super('Preloader');
   }
-
 
   init() {
     this.readyCount = 0;

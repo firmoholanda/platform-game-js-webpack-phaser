@@ -1,12 +1,15 @@
+/* eslint-disable no-undef */
+/* eslint-disable import/no-extraneous-dependencies */
+
 import 'phaser';
 import Button from '../Objects/Button';
-import { saveLocalScore } from '../Helpers/saveLocal';
+import { getLocalScore, saveLocalScore } from '../Helpers/localStorage';
 
 let livesText;
 let lives = 3;
 
 let scoreText;
-let score = 0;
+let score = getLocalScore();
 
 let currentMap = 1;
 
@@ -16,27 +19,24 @@ export default class GameScene extends Phaser.Scene {
   }
 
   preload() {
-
     // preload map
     this.load.tilemapTiledJSON('map01', 'assets/tilemaps/level01.json');
     this.load.tilemapTiledJSON('map02', 'assets/tilemaps/level02.json');
     this.load.tilemapTiledJSON('map03', 'assets/tilemaps/level03.json');
-    
+
     // preload images
     this.load.image('background', 'assets/images/background.png');
-    this.load.image('tiles', 'assets/tilesets/platformPack_tilesheet.png');    
+    this.load.image('tiles', 'assets/tilesets/platformPack_tilesheet.png');
     this.load.image('spike', 'assets/images/spike.png');
     this.load.image('diamond', 'assets/images/diamond.png');
-    
+
     // preload player
     this.load.atlas('player', 'assets/images/kenney_player.png', 'assets/images/kenney_player_atlas.json');
-
   }
 
   create() {
-    
     // create map
-    const map = this.make.tilemap({ key: 'map0' + currentMap });
+    const map = this.make.tilemap({ key: `map0${currentMap}` });
 
     // create tileset
     const tileset = map.addTilesetImage('kenney_simple_platformer', 'tiles');
@@ -51,7 +51,7 @@ export default class GameScene extends Phaser.Scene {
 
     // add player to map
     this.player = this.physics.add.sprite(50, 300, 'player');
-    this.player.setBounce(0.3); 
+    this.player.setBounce(0.3);
     this.player.setCollideWorldBounds(true);
     this.physics.add.collider(this.player, platforms);
 
@@ -67,7 +67,7 @@ export default class GameScene extends Phaser.Scene {
         end: 3,
       }),
       frameRate: 10,
-      repeat: -1
+      repeat: -1,
     });
 
     // idle animation
@@ -94,27 +94,30 @@ export default class GameScene extends Phaser.Scene {
     this.diamonds = this.physics.add.group({ allowGravity: false, immovable: true });
 
     // get spikes from the object layer of our tiled map
-    const spikeObjects = map.getObjectLayer('Spikes')['objects'];
+    const spikeObjects = map.getObjectLayer('Spikes').objects;
     spikeObjects.forEach(spikeObject => {
       const spike = this.spikes.create(spikeObject.x, spikeObject.y + 200 - spikeObject.height, 'spike').setOrigin(0, 0);
       spike.body.setSize(spike.width, spike.height - 20).setOffset(0, 20);
     });
 
-    const diamondObjects = map.getObjectLayer('Diamonds')['objects'];
+    const diamondObjects = map.getObjectLayer('Diamonds').objects;
     diamondObjects.forEach(diamondObject => {
       const diamond = this.diamonds.create(diamondObject.x, diamondObject.y + 200 - diamondObject.height, 'diamond').setOrigin(0, 0);
       diamond.body.setSize(diamond.width, diamond.height - 20).setOffset(0, 20);
     });
 
     // display total lives and score
-    livesText = this.add.text(20, 525, "lives: " + lives, { fontSize: '20px', fill: '#ffffff', });
-    scoreText = this.add.text(20, 550, "score: " + score, { fontSize: '20px', fill: '#ffffff', });
+    livesText = this.add.text(20, 525, `lives: ${lives}`, { fontSize: '20px', fill: '#ffffff' });
+    scoreText = this.add.text(20, 550, `score: ${score}`, { fontSize: '20px', fill: '#ffffff' });
 
-    // add collision between the player and the spikes and the diamond
-    this.physics.add.collider(this.player, this.spikes, hitSpikes, null, this);
-    this.physics.add.collider(this.diamonds, this.player, collectDiamond, null, this);
+    // reset variables and end game
+    const gameOver = () => {
+      lives = 3;
+      score = 0;
+      currentMap = 1;
+      this.scene.start('GameOver');
+    };
 
-    
     function hitSpikes(player) {
       // set player to the beginning of the map
       player.setVelocity(0, 0);
@@ -122,33 +125,37 @@ export default class GameScene extends Phaser.Scene {
       player.setY(300);
       player.play('idle', true);
       player.setAlpha(0);
-      let tw = this.tweens.add({ targets: player, alpha: 1, duration: 100, ease: 'Linear', repeat: 5, });
+      this.tweens.add({
+        targets: player, alpha: 1, duration: 100, ease: 'Linear', repeat: 5,
+      });
 
       // update total player lives
       lives -= 1;
-      livesText.setText("lives: " + lives);
+      livesText.setText(`lives: ${lives}`);
 
       // game over if no life
-      if (lives == 0) {
-        this.scene.start('GameOver');
+      if (lives === 0) {
+        gameOver();
       }
-      
     }
 
-    function collectDiamond(diamond) {
+    function collectDiamond() {
       score += 3;
-      scoreText.setText("score: " + score);
+      scoreText.setText(`score: ${score}`);
 
-      saveLocalScore(score)
-      currentMap +=1;
+      saveLocalScore(score);
+      currentMap += 1;
 
-      if (score == 9) {
-        this.scene.start('GameOver');
+      if (score === 9) {
+        gameOver();
       } else {
         this.scene.restart();
       }
     }
 
+    // add collision between the player and the spikes and the diamond
+    this.physics.add.collider(this.player, this.spikes, hitSpikes, null, this);
+    this.physics.add.collider(this.diamonds, this.player, collectDiamond, null, this);
   }
 
   update() {
@@ -184,5 +191,4 @@ export default class GameScene extends Phaser.Scene {
       this.player.setFlipX(true);
     }
   }
-
 }

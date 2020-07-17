@@ -1,30 +1,29 @@
+/* eslint-disable no-undef */
+/* eslint-disable import/no-extraneous-dependencies */
+
 import 'phaser';
 import config from '../Config/config';
 import Button from '../Objects/Button';
 
 export default class TitleScene extends Phaser.Scene {
-  constructor () {
+  constructor() {
     super('Title');
   }
 
-  create () {
+  create() {
     this.add.image(400, 100, 'diamond').setAlpha(0.7);
 
     // Game
-    this.gameButton = new Button(this, config.width/2, config.height/2 - 100, 'blueButton1', 'blueButton2', 'play', 'Game');
+    this.gameButton = new Button(this, config.width / 2, config.height / 2 - 100, 'blueButton1', 'blueButton2', 'play', 'Welcome');
 
     // Options
-    this.optionsButton = new Button(this, config.width/2, config.height/2, 'blueButton1', 'blueButton2', 'options', 'Options');
+    this.optionsButton = new Button(this, config.width / 2, config.height / 2, 'blueButton1', 'blueButton2', 'options', 'Options');
 
     // Credits
-    this.creditsButton = new Button(this, config.width/2, config.height/2 + 100, 'blueButton1', 'blueButton2', 'credits', 'Credits');
+    this.creditsButton = new Button(this, config.width / 2, config.height / 2 + 100, 'blueButton1', 'blueButton2', 'credits', 'Credits');
 
     // board
     this.boardButton = new Button(this, config.width / 2, config.height / 2 + 200, 'blueButton1', 'blueButton2', 'board', 'Leaderboard');
-
-    // game over
-    this.goButton = new Button(this, config.width / 2, config.height / 2 + 250, 'blueButton1', 'blueButton2', 'game over', 'GameOver');
-
 
     this.model = this.sys.game.globals.model;
     if (this.model.musicOn === true && this.model.bgMusicPlaying === false) {
@@ -35,17 +34,19 @@ export default class TitleScene extends Phaser.Scene {
     }
   }
 
-  centerButton (gameObject, offset = 0) {
+  centerButton(gameObject, offset = 0) {
     Phaser.Display.Align.In.Center(
       gameObject,
-      this.add.zone(config.width/2, config.height/2 - offset * 100, config.width, config.height)
+      // eslint-disable-next-line max-len
+      this.add.zone(config.width / 2, config.height / 2 - offset * 100, config.width, config.height),
     );
   }
 
-  centerButtonText (gameText, gameButton) {
+  // eslint-disable-next-line class-methods-use-this
+  centerButtonText(gameText, gameButton) {
     Phaser.Display.Align.In.Center(
       gameText,
-      gameButton
+      gameButton,
     );
   }
-};
+}
