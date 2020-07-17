@@ -33,7 +33,6 @@
     "style-loader": "^1.2.0",
     "stylelint": "^13.6.1",
     "stylelint-config-standard": "^20.0.0",
-    "stylelint-scss": "^3.17.2",
     "webpack": "^3.4.1",
     "webpack-dev-server": "^2.11.0"
   },
@@ -43,6 +42,5 @@
     "phaser3-project-template": "^1.0.9",
     "phaser3-rex-plugins": "^1.1.19",
     "regenerator-runtime": "^0.13.5",
-    "stylelint-csstree-validator": "^1.8.0"
   }
 }
