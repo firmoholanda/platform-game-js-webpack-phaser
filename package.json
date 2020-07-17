@@ -36,6 +36,9 @@
     "stylelint-config-standard": "^20.0.0",
     "webpack": "^3.4.1",
     "webpack-dev-server": "^2.11.0",
-    "node-fetch": "^2.6.0"
+  },
+  "dependencies": {
+    "node-fetch": "^2.6.0",
+    "regenerator-runtime": "^0.13.5"
   }
 }
