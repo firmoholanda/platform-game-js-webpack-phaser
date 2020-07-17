@@ -9,9 +9,7 @@ export default class GameOverScene extends Phaser.Scene {
     super('GameOver');
   }
 
-
   create() {
-
     const localName = getLocalName();
     const localScore = getLocalScore();
 
@@ -19,7 +17,7 @@ export default class GameOverScene extends Phaser.Scene {
 
     this.title = this.add.text(0, 0, 'game over', { fontSize: '32px', fontStyle: 'bold', fill: '#fff' });
     this.messageText = this.add.text(0, 0, 'thanks for playing');
-    this.score = this.add.text(0, 0, "score: " + localScore, { fontSize: '30px', fill: '#fff' });
+    this.score = this.add.text(0, 0, `score: ${localScore}`, { fontSize: '30px', fill: '#fff' });
     this.zone = this.add.zone(config.width / 2, config.height / 2, config.width, config.height);
 
     // post score to api
@@ -47,7 +45,5 @@ export default class GameOverScene extends Phaser.Scene {
     this.score.displayOriginY = -80;
 
     this.menuButton = new Button(this, 400, 530, 'blueButton1', 'blueButton2', 'menu', 'Title');
-
   }
-
 }

@@ -5,7 +5,6 @@ export default class PreloaderScene extends Phaser.Scene {
     super('Preloader');
   }
 
-
   init() {
     this.readyCount = 0;
   }

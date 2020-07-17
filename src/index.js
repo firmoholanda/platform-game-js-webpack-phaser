@@ -12,7 +12,7 @@ import LeaderboardScene from './Scenes/LeaderboardScene';
 import Model from './Objects/Model';
 
 class Game extends Phaser.Game {
-  constructor () {
+  constructor() {
     super(config);
     const model = new Model();
     this.globals = { model, bgMusic: null };

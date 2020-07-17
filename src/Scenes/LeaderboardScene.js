@@ -9,7 +9,6 @@ export default class LeaderboardScene extends Phaser.Scene {
   }
 
   create() {
-
     this.title = this.add.text(0, 0, 'leaderboard', { fontSize: '32px', fontStyle: 'bold', fill: '#fff' });
     this.zone = this.add.zone(config.width / 2, config.height / 2, config.width, config.height);
 
@@ -50,8 +49,6 @@ export default class LeaderboardScene extends Phaser.Scene {
         });
       });
 
-
     this.menuButton = new Button(this, 400, 530, 'blueButton1', 'blueButton2', 'menu', 'Title');
   }
-
 }
