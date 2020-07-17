@@ -35,13 +35,7 @@
     "stylelint": "^13.6.1",
     "stylelint-config-standard": "^20.0.0",
     "webpack": "^3.4.1",
-    "webpack-dev-server": "^2.11.0"
-  },
-  "dependencies": {
-    "eslint-config-airbnb": "^18.2.0",
-    "node-fetch": "^2.6.0",
-    "phaser3-project-template": "^1.0.9",
-    "phaser3-rex-plugins": "^1.1.19",
-    "regenerator-runtime": "^0.13.5"
+    "webpack-dev-server": "^2.11.0",
+    "node-fetch": "^2.6.0"
   }
 }
