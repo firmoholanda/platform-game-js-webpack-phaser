@@ -31,6 +31,4 @@ class Game extends Phaser.Game {
     this.scene.start('Boot');
   }
 }
-module.exports = Game;
-
 window.game = new Game();
