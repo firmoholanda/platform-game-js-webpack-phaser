@@ -33,7 +33,7 @@ this project can be found in https://github.com/firmoholanda/platform-game-js-we
 
 
 
-## 🔨 instructions
+## 🔨 instructions and how to play
 
 to get started with the app, clone the repo:
 ```
@@ -64,6 +64,18 @@ run tests:
 ```
 $ npm test
 ```
+
+
+### how to play:
+
+#### the character:
+to move around the map with the character you use the arrow keys on your keyboard. each arrow key moves the character in the respective direction. you can use the spacebar to jump.
+
+#### the spikes:
+there are several spikes throughout the map, avoid touching them. if you touch one, you will lose one life. you have 3 lives at the start of the game.
+
+#### the diamond:
+diamonds are the objective of the game, you have to capture each diamond in the current map to advance to the next one. each diamond gives you 3 points. there are a total of 3 diamonds on the game. one for each map.
 
 
 ## 🤝 contributing
