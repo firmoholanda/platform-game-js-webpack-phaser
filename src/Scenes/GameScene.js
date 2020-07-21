@@ -9,7 +9,7 @@ let livesText;
 let lives = 3;
 
 let scoreText;
-let score = getLocalScore();
+let score = 0;
 
 let currentMap = 1;
 
@@ -134,7 +134,7 @@ export default class GameScene extends Phaser.Scene {
       livesText.setText(`lives: ${lives}`);
 
       // game over if no life
-      if (lives === 0) {
+      if (lives <= 0) {
         gameOver();
       }
     }
@@ -146,7 +146,7 @@ export default class GameScene extends Phaser.Scene {
       saveLocalScore(score);
       currentMap += 1;
 
-      if (score === 9) {
+      if (score >= 9) {
         gameOver();
       } else {
         this.scene.restart();
