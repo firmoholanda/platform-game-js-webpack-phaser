@@ -1,6 +1,6 @@
 const initSaveLocal = () => {
   localStorage.setItem('name', 'anonymous');
-  localStorage.setItem('score', 0);
+  localStorage.setItem('score', parseInt(0, 10));
 };
 
 const saveLocalName = (name) => {
@@ -19,7 +19,7 @@ const getLocalName = () => {
 
 const getLocalScore = () => {
   const score = parseInt(localStorage.getItem('score'), 10);
-  if (score === 0) { localStorage.setItem('score', 0); }
+  if (score === 0) { localStorage.setItem('score', parseInt(score, 10)); }
   return score;
 };
 
