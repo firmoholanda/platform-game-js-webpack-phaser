@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.4" tiledversion="1.4.1" orientation="orthogonal" renderorder="right-down" width="14" height="7" tilewidth="64" tileheight="64" infinite="0" nextlayerid="8" nextobjectid="20">
+ <editorsettings>
+  <export target="." format="json"/>
+ </editorsettings>
+ <tileset firstgid="1" name="kenney_simple_platformer" tilewidth="64" tileheight="64" tilecount="98" columns="14">
+  <image source="../tilesets/platformPack_tilesheet.png" width="896" height="448"/>
+ </tileset>
+ <layer id="6" name="Platforms" width="14" height="7">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,60,0,0,0,0,
+0,0,0,0,0,60,0,0,0,60,0,0,0,0,
+0,0,60,0,0,60,0,0,0,60,0,0,0,0,
+3,3,3,3,3,3,3,3,3,3,3,3,3,3,
+4,4,4,4,4,4,4,4,4,4,4,4,4,4,
+4,4,4,4,4,4,4,4,4,4,4,4,4,4
+</data>
+ </layer>
+ <objectgroup id="3" name="Spikes">
+  <object id="1" gid="71" x="640" y="256" width="64" height="64"/>
+  <object id="2" gid="71" x="256" y="256" width="64" height="64"/>
+  <object id="15" gid="71" x="192" y="256" width="64" height="64"/>
+  <object id="16" gid="71" x="384" y="256" width="64" height="64"/>
+  <object id="17" gid="71" x="512" y="256" width="64" height="64"/>
+  <object id="18" gid="71" x="448" y="256" width="64" height="64"/>
+  <object id="19" gid="71" x="704" y="256" width="64" height="64"/>
+ </objectgroup>
+ <objectgroup id="7" name="Diamonds">
+  <object id="12" gid="50" x="704" y="192" width="64" height="64"/>
+ </objectgroup>
+</map>
