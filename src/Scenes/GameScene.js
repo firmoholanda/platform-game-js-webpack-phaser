@@ -3,7 +3,7 @@
 
 import 'phaser';
 import Button from '../Objects/Button';
-import { getLocalScore, saveLocalScore } from '../Helpers/localStorage';
+import { saveLocalScore } from '../Helpers/localStorage';
 
 let livesText;
 let lives = 3;
