@@ -1,9 +1,11 @@
 # 📃 platform-game-js-webpack-phaser
 
-this is a simple game, made using phaser framework.
-the objective of this game is to collect the diamond on the scene while trying to avoid the spikes.
-you start with 3 lives and if you hit the spikes, you lose one. each diamond gives you 3 scores. so, try to collect all of them.
-the game is over if you run out of lives or collect all the diamonds. have fun!
+This project consists on building a video game using JavaScript and the game engine phaser.
+
+This is a simple game, made using phaser framework.
+The objective of this game is to collect the diamond on the scene while trying to avoid the spikes.
+You start with 3 lives and if you hit the spikes, you lose one. Each diamond gives you 3 scores. So, try to collect all of them.
+The game is over if you run out of lives or collect all the diamonds. Have fun!
 
 
 
